@@ -6,9 +6,22 @@ module.exports = {
     res.send({ hi: 'there' });
   },
 
-  create(req, res) {
-    const driverProps = req.body;
-    Driver.create(driverProps)
-      .then(driver => res.send(driver));
+  create(req, res, next) {
+    Driver.create(req.body)
+      .then(driver => res.status(201).send(driver))
+      .catch(next);
+  },
+
+  update(req, res, next) {
+    Driver.findByIdAndUpdate(req.params.id, req.body)
+      .then(() => Driver.findById(req.params.id))
+      .then(driver => res.status(200).send(driver))
+      .catch(next);
+  },
+
+  delete(req, res, next) {
+    Driver.findByIdAndRemove(req.params.id)
+      .then(() => res.status(204).end())
+      .catch(next);
   }
 }
