@@ -1,0 +1,18 @@
+{
+  "name": "uber-clone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "nodemon --exec 'mocha --recursive -R min'"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.0-rc0"
+  },
+  "devDependencies": {
+    "mocha": "^4.1.0",
+    "nodemon": "^1.14.7",
+    "supertest": "^3.0.0"
+  }
+}
