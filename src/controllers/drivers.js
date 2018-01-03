@@ -2,13 +2,11 @@ const Driver = require('../models/driver');
 
 module.exports = {
 
-  greeting(req, res) {
-    res.send({ hi: 'there' });
-  },
-
   index(req, res, next) {
     const { lng, lat } = req.query;
-
+    if (!lng || !lat) {
+      return res.status(400).send({ message: 'Required fields: lng and lat' });
+    }
     Driver.aggregate().near({
       near: [parseFloat(lng), parseFloat(lat)],
       distanceField: "dist.calculated",

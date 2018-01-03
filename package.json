@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min'"
+    "dev": "nodemon index.js",
+    "test": "NODE_ENV=test nodemon --exec 'mocha --recursive -R min'",
+    "debug-console": "nodemon inspect index.js",
+    "debug-devtools": "nodemon --inspect-brk index.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",
